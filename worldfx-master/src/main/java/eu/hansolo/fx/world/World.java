@@ -768,7 +768,7 @@ public class World extends Region {
             case "PH": s = "Philippines"; break;
             case "PK": s = "Pakistan"; break;
             case "PL": s = "Poland"; break;
-            case "PM": s = "St._Pierre_And_Miquelon"; break;
+            case "PM": s = "St_Pierre_And_Miquelon"; break;
             case "PN": s = "Pitcairn"; break;
             case "PR": s = "Puerto_Rico"; break;
             case "PS": s = "Palestine"; break;
@@ -787,7 +787,7 @@ public class World extends Region {
             case "SD": s = "Sudan"; break;
             case "SE": s = "Sweden"; break;
             case "SG": s = "Singapore"; break;
-            case "SH": s = "St._Helena"; break;
+            case "SH": s = "St_Helena"; break;
             case "SI": s = "Slovenia"; break;
             case "SJ": s = "Svalbard"; break;
             case "SK": s = "Slovakia"; break;
@@ -832,8 +832,8 @@ public class World extends Region {
             case "VA": s = "Vatikan_City"; break;
             case "VC": s = "Saint_Vincent"; break;
             case "VE": s = "Venezuela"; break;
-            case "VG": s = "VirginIslands(British)"; break;
-            case "VI": s = "Virgin Islands_(U.S.)"; break;
+            case "VG": s = "VirginIslands_BR"; break;
+            case "VI": s = "Virgin Islands_US"; break;
             case "VN": s = "Vietnam"; break;
             case "VU": s = "Vanuatu"; break;
             case "WF": s = "Wallis_And_Futuna_Islands"; break;
