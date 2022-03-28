@@ -605,12 +605,12 @@ public class World extends Region {
             case "BB": s = "Barbados"; break;
             case "BD": s = "Bangladesh"; break;
             case "BE": s = "Belgium"; break;
-            case "BF": s = "Burkina Faso"; break;
+            case "BF": s = "Burkina_Faso"; break;
             case "BG": s = "Bulgaria"; break;
             case "BH": s = "Bahrain"; break;
             case "BI": s = "Burundi"; break;
             case "BJ": s = "Benin"; break;
-            case "BL": s = "Brazil"; break;
+            case "BL": s = "Saint_Barthelemy"; break;
             case "BN": s = "Brunei_Darussalam"; break;
             case "BO": s = "Bolivia"; break;
             case "BM": s = "Bermuda"; break;
@@ -626,7 +626,7 @@ public class World extends Region {
             case "CC": s = "Cocos_Islands"; break;
             case "CD": s = "Congo_Democratic_Republic"; break;
             case "CF": s = "Central_African_Republic"; break;
-            case "CG": s = "Congo Republic"; break;
+            case "CG": s = "Congo_Republic"; break;
             case "CH": s = "Switzerland"; break;
             case "CI": s = "Cote_D’Ivoire"; break;
             case "CK": s = "Cook_Islands"; break;
