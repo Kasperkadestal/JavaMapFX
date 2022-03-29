@@ -46,6 +46,7 @@ import org.kordamp.ikonli.materialdesign.MaterialDesign;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -474,7 +475,11 @@ public class World extends Region {
                 } else {
                     setSelectedCountry(COUNTRY);
                     System.out.println("Pressed country: " + COUNTRY_NAME);
-                    System.out.println(convert(COUNTRY_NAME));
+                    try {
+                        getFlights(COUNTRY_NAME);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     color = getSelectedColor();
                 }
                 formerSelectedCountry = getSelectedCountry();
@@ -581,6 +586,49 @@ public class World extends Region {
             group.relocate((getWidth() - width) * 0.5, (getHeight() - height) * 0.5);
 
             pane.setCache(false);
+        }
+    }
+
+    private void getFlights(String country) throws SQLException {
+        Connection con = getDatabaseConnection();
+        Statement stmt = con.createStatement();
+        String [] flightsString  = new String[10];
+        int i = 0;
+
+        stmt.executeUpdate("SET search_path TO jetstream;");
+        ResultSet flight = stmt.executeQuery("select * from flight where f_departure = '" + country + "';");
+        while (flight.next()){
+            String destination = flight.getString("f_destination");
+            String date = flight.getString("f_date");
+
+            flightsString[i] = destination + " | Date: " + date;
+            i++;
+        }
+
+        for (int j = 0; j < flightsString.length; j++) {
+            if (flightsString[i] != null){
+                System.out.println(flightsString[i]);
+            }
+        }
+
+        con.close();
+        stmt.close();
+    }
+
+    public Connection getDatabaseConnection() {
+
+        String url = "jdbc:postgresql://pgserver.mau.se:5432/am2510";
+        String user = "am2510";
+        String password = "zyvl0ir7";
+
+        Connection con = null;
+
+        try {
+            con = DriverManager.getConnection(url, user, password);
+            return con;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
