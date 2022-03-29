@@ -592,10 +592,7 @@ public class World extends Region {
     private void getFlights(String country) throws SQLException {
         Connection con = getDatabaseConnection();
         Statement stmt = con.createStatement();
-
-        String [] flightsString  = new String[10];
-        int i = 0;
-
+        
         stmt.executeUpdate("SET search_path TO jetstream;");
         ResultSet flight = stmt.executeQuery("select * from flight where f_departure = '" + country + "';");
         while (flight.next()){
