@@ -119,12 +119,15 @@ public class World extends Region {
     private              EventHandler<MouseEvent>        mouseReleaseHandler;
     private              EventHandler<MouseEvent>        mouseExitHandler;
 
+    //private              Game                            game;
+
 
     // ******************** Constructors **************************************
     public World() {
         this(Resolution.HI_RES);
     }
     public World(final Resolution RESOLUTION) {
+        //game = new Game(this);
         resolutionProperties = readProperties(Resolution.HI_RES == RESOLUTION ? World.HIRES_PROPERTIES : World.LORES_PROPERTIES);
         backgroundColor      = new StyleableObjectProperty<Color>(BACKGROUND_COLOR.getInitialValue(World.this)) {
             @Override protected void invalidated() { setBackground(new Background(new BackgroundFill(get(), CornerRadii.EMPTY, Insets.EMPTY))); }
@@ -475,6 +478,7 @@ public class World extends Region {
                 } else {
                     setSelectedCountry(COUNTRY);
                     System.out.println("Pressed country: " + COUNTRY_NAME);
+                    //game.checkAnswer(COUNTRY_NAME);
                     try {
                         getFlights(convert(COUNTRY_NAME));
                     } catch (SQLException e) {
