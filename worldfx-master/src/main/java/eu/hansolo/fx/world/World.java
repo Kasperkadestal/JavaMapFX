@@ -602,18 +602,10 @@ public class World extends Region {
         while (flight.next()){
             String destination = flight.getString("f_destination");
             String date = flight.getString("f_date");
-
-            flightsString[i] = destination + " | Date: " + date;
+            System.out.println(destination + " | Date: " + date);
             i++;
         }
 
-        if (flightsString[0] == null){
-            System.out.println("NULL");
-        }
-
-        for (int j = 0; j < flightsString.length; j++) {
-                System.out.println(flightsString[i]);
-        }
 
         con.close();
         stmt.close();
