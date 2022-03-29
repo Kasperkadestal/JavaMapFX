@@ -476,7 +476,7 @@ public class World extends Region {
                     setSelectedCountry(COUNTRY);
                     System.out.println("Pressed country: " + COUNTRY_NAME);
                     try {
-                        getFlights(COUNTRY_NAME);
+                        getFlights(convert(COUNTRY_NAME));
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
@@ -592,10 +592,12 @@ public class World extends Region {
     private void getFlights(String country) throws SQLException {
         Connection con = getDatabaseConnection();
         Statement stmt = con.createStatement();
+
         String [] flightsString  = new String[10];
         int i = 0;
 
         stmt.executeUpdate("SET search_path TO jetstream;");
+        stmt.executeUpdate("insert into plane(p_model,p_company) values ('Airbus_B33','KappeAir');");
         ResultSet flight = stmt.executeQuery("select * from flight where f_departure = '" + country + "';");
         while (flight.next()){
             String destination = flight.getString("f_destination");
@@ -605,10 +607,12 @@ public class World extends Region {
             i++;
         }
 
+        if (flightsString[0] == null){
+            System.out.println("NULL");
+        }
+
         for (int j = 0; j < flightsString.length; j++) {
-            if (flightsString[i] != null){
                 System.out.println(flightsString[i]);
-            }
         }
 
         con.close();
@@ -625,8 +629,11 @@ public class World extends Region {
 
         try {
             con = DriverManager.getConnection(url, user, password);
+            if (con == null)
+            System.out.println("Con is null");
             return con;
         } catch (Exception e) {
+            System.out.println("Failed to connect.");
             e.printStackTrace();
             return null;
         }
