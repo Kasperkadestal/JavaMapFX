@@ -597,7 +597,6 @@ public class World extends Region {
         int i = 0;
 
         stmt.executeUpdate("SET search_path TO jetstream;");
-        stmt.executeUpdate("insert into plane(p_model,p_company) values ('Airbus_B33','KappeAir');");
         ResultSet flight = stmt.executeQuery("select * from flight where f_departure = '" + country + "';");
         while (flight.next()){
             String destination = flight.getString("f_destination");
@@ -621,11 +620,8 @@ public class World extends Region {
 
         try {
             con = DriverManager.getConnection(url, user, password);
-            if (con == null)
-            System.out.println("Con is null");
             return con;
         } catch (Exception e) {
-            System.out.println("Failed to connect.");
             e.printStackTrace();
             return null;
         }
